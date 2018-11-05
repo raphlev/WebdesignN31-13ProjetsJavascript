@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Formulaire 01</title>
+</head>
+<body>
+
+<form id="formulaire">
+   E-mail <input type="text" id="email">
+   <input type="submit" value="Envoyer" />
+</form>
+
+<script>
+
+var form = document.getElementById("formulaire");
+form.addEventListener("submit", function(e) {
+   var email = document.getElementById("email");
+   if(email.value == "") {
+      email.value = "Veuillez saisir votre adresse";
+      e.preventDefault();
+   }
+});
+
+
+
+</script>
+
+
+</body>
+</html>

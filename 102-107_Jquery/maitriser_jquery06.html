@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Maîtriser jQuery 06</title>
+  
+  <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+  
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+</head>
+<body>
+
+
+<div id="accordeon">
+	<h2>Nous contacter</h2>
+	<div>
+		<p>N'hésitez pas à prendre contact avec notre équipe</p>
+	</div>
+	<h2>Nos travaux</h2>
+	<div>
+		<p>Consultez nos dernières réalisations</p>
+	</div>
+	<h2>Nos projets</h2>
+	<div>
+		<p>Découvrez nos projets en avant-première</p>
+	</div>
+</div>
+
+
+
+<script>
+$(document).ready(function() {
+	$( "#accordeon" ).accordion();
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Manipuler les fichiers 03</title>
+  
+</head>
+<body>
+
+<input type="file" id="images" multiple />
+<output id="resultat"></output>
+<style>
+.vignette {
+   height: 75px;
+   margin: 10px 5px 0 0;
+}
+</style>
+<script>
+function afficherVignettes(e) {
+   var images = e.target.files;
+
+   for (var i = 0, f; f = images[i]; i++) {
+      if (!f.type.match("image.*")) {
+         continue;
+      }
+
+      var reader = new FileReader();
+
+      reader.onload = (function(img) {
+         return function(ev) {
+            var span = document.createElement("span");
+            span.innerHTML = ['<img class="vignette" src="', ev.target.result,
+                            '" title="', escape(img.name), '"/>'].join('');
+            document.getElementById("resultat").insertBefore(span, null);
+         };
+      })(f);
+
+      reader.readAsDataURL(f);
+   }
+}
+document.getElementById("images").addEventListener("change", afficherVignettes, false);
+</script>
+
+
+
+</script>
+</body>
+</html>

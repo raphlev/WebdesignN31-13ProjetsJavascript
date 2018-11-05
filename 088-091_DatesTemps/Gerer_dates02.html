@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Gérer dates 02</title>
+</head>
+<body>
+
+<span id="horloge"></span>
+
+<script>
+
+function chrono() {
+    var d = new Date();
+    var t = d.toLocaleTimeString();
+    document.getElementById("horloge").innerHTML = t;
+}
+setInterval(function(){ chrono() }, 1000);
+
+
+</script>
+
+
+</body>
+</html>

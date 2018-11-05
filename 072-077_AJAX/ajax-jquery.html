@@ -1,0 +1,24 @@
+<script
+			  src="https://code.jquery.com/jquery-3.2.1.min.js"
+			  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+			  crossorigin="anonymous"></script>
+			  
+Identifiant : <input type="text" id="identifiant">
+<button id="envoi">Valider</button>
+<div id="resultat"></div>
+
+
+
+<script>
+$("#envoi").click(function() {
+   var identifiant = $("#identifiant").val();
+   $.ajax({
+      method: "POST",
+      url: "ajax.php",
+	  data: { id : identifiant }
+	})
+	.done(function(msg) {
+	   $("#resultat").html(msg);
+	});
+});
+</script>

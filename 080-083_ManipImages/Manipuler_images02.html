@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Manipuler les images 02</title>
+  
+</head>
+<body>
+
+<script>
+
+var monImage = new Image(100, 200);
+
+monImage.addEventListener("load", function() {
+    console.log("Image chargée");
+});
+monImage.addEventListener("error", function() {
+    console.log("Erreur de chargement");
+});
+monImage.addEventListener("abort", function() {
+    console.log("Chargement annulé");
+});
+monImage.src = "image.jpg";
+
+
+</script>
+
+
+
+</script>
+</body>
+</html>

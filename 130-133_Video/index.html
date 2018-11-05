@@ -1,0 +1,177 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>Lecteur vidéo</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<link type="text/css" rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" />
+<style>
+#contenu {
+   width: 854px;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+#boutons {
+   background: #000;
+   height: 60px;
+   padding-top: 6px;
+}
+#progression {
+   width: 548px;
+   display: inline-block;
+   height: 40px;
+}
+#volume {
+   float:right;
+   width: 70px;
+   margin-top: 18px;
+}
+#pleinecran {
+   float:right;
+   margin-left:14px;
+   margin-right:5px;
+}
+</style>
+
+<script>
+$(document).ready(function(){
+
+
+function affProgression() {
+$("#progression").progressbar({ value: $("#lecteur")[0].currentTime*100/$("#lecteur")[0].duration });
+$("#temps").html($("#lecteur")[0].currentTime.toFixed(2) + " / " + $("#lecteur")[0].duration.toFixed(2) + "s");
+}
+
+function positionElem(el) {
+var x = y = 0;
+if(el.offsetParent) {    
+x = el.offsetLeft;
+y = el.offsetTop;    
+ 		while(el = el.offsetParent) {    
+x += el.offsetLeft;
+y += el.offsetTop;    
+}    
+}    
+return {'x':x, 'y':y};    
+}
+
+$("#volume").slider({
+slide: function(event, ui) {
+var volume = ui.value/100;
+gereVolume(volume);
+},
+value: 50
+});
+function gereVolume(value) {
+localStorage.setItem('volume',$("#lecteur")[0].volume);
+if(value == 0) {
+$("#bt_volume").attr('src', "img/volumeoff.png");
+}
+else
+$("#bt_volume").attr('src', "img/volume.png");
+$("#volume").slider("option", "value", value*100);
+ 	$("#lecteur")[0].volume = value;
+	
+}
+
+$("#bt_volume").click(function(){
+	var volume = $("#volume").slider("option", "value");
+// On coupe le son
+if(volume > 0)
+		gereVolume(0);
+	else
+	// On réinitialise le son
+		gereVolume(0.5);
+});
+
+
+$("#progression").click(function(e) {
+	var ev = e || window.event;
+// On récupère la position de la barre de progression sur la page
+var pos = positionElem(this);
+// ev.clientX correspond à la coordonnée x de l'endroit cliqué
+// On lui soustrait la position de la barre de progression
+var diff = ev.clientX - pos.x;      
+// On remplit la barre de progression en conséquence
+$("#progression").progressbar({value: diff*100/$(this).width()});
+var duration = $("#lecteur")[0].duration;
+// On replace la lecture au moment considéré
+$("#lecteur")[0].currentTime = diff*duration/$(this).width();
+});
+
+
+$("#progression").progressbar();  
+
+// Lancement de la lecture et mise en pause
+$("#lecture").click(function(){
+if($("#lecteur")[0].paused) {
+$("#lecteur")[0].play();
+$("#lecture").attr('src','img/pause.png');
+setInterval("affProgression()", 10);
+}
+else {
+$("#lecteur")[0].pause();
+$("#lecture").attr('src','img/lecture.png');
+}
+});
+// Arrêt de la vidéo
+$("#stop").click(function(){
+$("#lecteur")[0].pause();
+$("#lecteur")[0].currentTime = 0;
+$("#lecture").attr('src','img/lecture.png');
+});
+
+
+$("#lecteur")[0].volume=(localStorage.getItem('volume')||1);﻿
+var volumeActuel = $("#lecteur")[0].volume*100;
+console.log(volumeActuel);
+//$("#volume span").css("left",volumeActuel+"%");
+$( "#volume" ).slider( "option", "value", volumeActuel );
+//$("#volume").slider("option", "value", volumeActuel);
+console.log("Volume : " + localStorage.getItem('volume'));
+
+
+});
+
+
+
+
+
+</script>
+
+<!--
+If you are playing around with the HTML5 Video tag you might need some sample video files and these video files have to be in different web formats. 
+The problem is that different browsers support different types of video files, so to provide proper cross-browser support, you need to convert your video
+into many different formats. I plan on writing more about HTML5 Video and some cool things that it allows you to do but as a start, 
+I wanted to convert one small video file into a lot of different formats and provide these files as a sample video for anyone to use in their tests and projects.
+For web browsers, you are basically going to need MP4, WebM and Ogg formats(Ogg format is specified as type=video/ogg but the video extension is .ogv)
+while mobile browsers will use MP4 and 3GP formats. And HTML5 is obviously about eliminating the need for Flash but I will include flv format as well.
+-->
+
+</head>
+<body>
+<div id="contenu">
+<video id="lecteur" poster="film.jpg" width="854" height="480" controls>
+<source src="small.mp4" type="video/mp4"/>
+<source src="small.webm" type="video/webm"/>
+<source src="small.ogg" type="video/ogg"/>
+<source src="small.3gp" type="video/3gp"/>
+<source src="small.flv" type="video/flv"/>
+<p>Votre navigateur n'est pas compatible HTML5.</p>
+</video>
+<div id="boutons">
+<img src="img/pleinecran.png" id="pleinecran" />
+<img src="img/lecture.png" id="lecture" />
+<img src="img/stop.png" id="stop" />
+<div id="progression"><span id="temps"></span></div>
+<img src="img/volume.png" id="bt_volume" />
+<div id="volume"></div>
+</div>  
+</div>
+
+
+
+
+</body>
+</html>

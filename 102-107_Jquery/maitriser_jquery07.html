@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Maîtriser jQuery 07</title>
+  
+  <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+  
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+</head>
+<body>
+
+
+
+<div id="onglets">
+  <ul>
+    <li><a href="#onglet-1">Nous contacter</a></li>
+    <li><a href="#onglet-2">Nos travaux</a></li>
+    <li><a href="#onglet-3">Nos projets</a></li>
+  </ul>
+  <div id="onglet-1">
+    <p>N'hésitez pas à prendre contact avec notre équipe</p>
+  </div>
+  <div id="onglet-2">
+    <p>Consultez nos dernières réalisations</p>
+  </div>
+  <div id="onglet-3">
+    <p>Découvrez nos projets en avant-première</p>
+  </div>
+</div>
+
+<script>
+$(document).ready(function() {
+	$( "#onglets" ).tabs();
+});
+</script>
+</body>
+</html>

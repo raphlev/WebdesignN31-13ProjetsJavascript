@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Interagir avec des événements 02</title>
+</head>
+<body>
+
+<input type="text" placeholder="Entrez un montant en euros" id="euro">
+<input type="submit" value="Convertir" id="conversion">
+<div id="resultat"></div>
+
+
+<script>
+
+var taux = 1.1059;
+var element = document.getElementById("conversion");
+var source = document.getElementById("euro");
+element.addEventListener("click", function() {
+    var montant = source.value;
+    document.getElementById("resultat").innerHTML = montant*taux + " $";
+});
+
+</script>
+
+
+</body>
+</html>

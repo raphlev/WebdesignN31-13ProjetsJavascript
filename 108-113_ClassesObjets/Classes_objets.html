@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Classes & objets</title>
+</head>
+<body>
+
+<script>
+class Quadrilatere {
+  constructor(hauteur, largeur) {
+    this.nom = "quadrilatère";
+    this.hauteur = hauteur;
+    this.largeur = largeur;
+  }
+  typeFigure() {
+    console.log("Je suis un " + this.nom + ".");
+  }
+}
+var quadri = new Quadrilatere(300, 400);
+quadri.typeFigure();
+console.log("La largeur de ce quadrilatère est de " + quadri.largeur);
+
+class Carre extends Quadrilatere {
+  constructor(longueur) {
+    super(longueur, longueur);
+    this.nom = "carré";
+  }
+  get aire() {
+    return this.hauteur * this.largeur;
+  }
+  set aire(valeur) {
+    this.aire = valeur;
+  }
+}
+
+var carre = new Carre(5);
+carre.typeFigure();
+console.log("L'aire de ce carré est de " + carre.aire);
+
+class Rectangle extends Quadrilatere {
+  constructor(hauteur, largeur) {
+    super(hauteur, largeur);
+    this.nom = "rectangle";
+  }
+  typeFigure() {
+    console.log("Quant à moi, je suis un "+ this.nom);
+  }
+}
+
+var rect = new Rectangle(50, 60);
+rect.typeFigure();
+
+class Point {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+  static distance(a, b) {
+    const dx = a.x - b.x;
+    const dy = a.y - b.y;
+    return Math.sqrt(dx*dx + dy*dy);
+  }
+}
+
+var p1 = new Point(5, 5);
+var p2 = new Point(10, 10);
+console.log(Point.distance(p1, p2));
+
+var date = new Date();
+console.log("Nous sommes le " + date.getDate() + "/" + eval(date.getMonth()+1) + "/" + date.getFullYear() + " " + date.getHours() + "h" + date.getMinutes());
+
+class MaDate extends Date {
+  constructor() {
+    super();
+  }
+  getDateFormatee() {
+    var mois = ['Jan', 'Fev', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Aout', 'Sep', 'Oct', 'Nov', 'Dec'];
+    return this.getDate() + ' ' + mois[this.getMonth()] + ' ' +
+      this.getFullYear();
+  }
+}
+
+
+var dateProjet = new MaDate();
+console.log(dateProjet.getTime());
+console.log(dateProjet.getDateFormatee());
+
+
+</script>
+
+
+</body>
+</html>

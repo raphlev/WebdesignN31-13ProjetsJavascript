@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Gérer dates 01</title>
+</head>
+<body>
+
+<script>
+
+var date = new Date();
+
+alert("Nous sommes le " + date.getDate() + "/" + eval(date.getMonth()+1) + "/" + date.getFullYear() + " " + date.getHours() + "h" + date.getMinutes());
+
+var options = {weekday: "long", year: "numeric", month: "long", day: "numeric", hour:"numeric", minute:"numeric"};
+var heure1 = new Date().toLocaleDateString("fr-FR");
+var heure2 = new Date().toLocaleDateString("fr-FR", options);
+alert(heure1);
+alert(heure2);
+
+var date2 = new Date("2012/06/02");
+var date3 = new Date();
+date3.setFullYear("2012");
+date3.setMonth("5");
+date3.setDate("2");
+alert(date2.toLocaleDateString("fr-FR", options));
+alert(date3.toLocaleDateString("fr-FR", options));
+
+
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Maîtriser les tableaux 03</title>
+  
+</head>
+<body>
+
+
+<script>
+function verifier(utilisateur,adherents) {
+   for (var i = 0; i < adherents.length; i++) {
+      if(utilisateur==adherents[i]) {
+         return "true";
+      }
+   }
+}
+var nouvelUtilisateur = prompt("Veuillez saisir votre identifiant");
+var listeUtilisateurs=["jean","sophie","nicolas"];
+if(verifier(nouvelUtilisateur,listeUtilisateurs)) {
+   alert("Le compte existe déjà");
+}
+else {
+   alert("Bienvenue sur notre site !");
+   listeUtilisateurs.push(nouvelUtilisateur);
+}
+
+</script>
+</body>
+</html>

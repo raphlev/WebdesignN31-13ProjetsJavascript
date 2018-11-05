@@ -1,0 +1,24 @@
+<button id="envoi">Lire le fichier</button>
+<div id="resultat"></div>
+
+
+
+<script>
+var element = document.getElementById("envoi");
+element.addEventListener("click", function() {
+   var ajax = new XMLHttpRequest();
+   ajax.open("GET", "ajax.json");
+   ajax.addEventListener("readystatechange", function() {
+      if(ajax.readyState === XMLHttpRequest.DONE && ajax.status === 200) {
+	     var json = ajax.responseText;
+		 var obj = JSON.parse(json);
+         var langage = obj.langage;
+		 var type = obj.type;
+		 
+	     
+	     document.getElementById("resultat").innerHTML = "Langage : " + langage + " Exécution " + type;
+	  }
+   });
+   ajax.send(null);
+});
+</script>

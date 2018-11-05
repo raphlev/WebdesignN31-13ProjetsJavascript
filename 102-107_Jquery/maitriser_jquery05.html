@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Maîtriser jQuery 05</title>
+  
+  <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+  
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+</head>
+<body>
+
+
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" />
+<button id="alerte">Cliquez-moi !</button>
+<div id="dialogue" title="Nous contacter">
+  <p>N'hésitez pas à nous laisser vos coordonnées, nous vous rappellerons dans les plus brefs délais.</p>
+</div>  
+<style>
+#dialogue { display:none; }
+</style>
+<script>
+$(document).ready(function() {
+	$("#alerte").click(function(){
+		$( "#dialogue" ).dialog();
+	});
+});
+</script>
+
+
+
+
+</body>
+</html>

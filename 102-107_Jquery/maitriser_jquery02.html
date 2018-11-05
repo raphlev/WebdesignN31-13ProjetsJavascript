@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Maîtriser jQuery 02</title>
+  
+  <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+  
+</head>
+<body>
+
+<ol id="liste">
+	<li>Maîtriser les bases du JavaScript</li>
+	<li>Créer vos propres variables</li>
+	<li>Gérer les boucles conditionnelles</li>
+</ol>
+
+<style>
+.vert {
+	background-color:#7ee97e;
+}
+.jaune {
+	background-color:#e9e37e;
+}
+.rouge {
+	background-color:#fd7059;
+}
+</style>
+
+<script>
+
+$(document).ready(function() {
+   $("#liste").addClass("vert");
+   $("#liste > li").addClass("jaune");
+    $("#liste li:last").hover(function() {
+		$(this).addClass("rouge");
+   },function(){
+     $(this).removeClass("rouge");
+   });
+      $("#liste").find("li").each(function(i) {
+	 i=i+1;
+     $(this).append( " -- dossier " + i );
+   });
+});
+
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Créer vos variables</title>
+</head>
+<body>
+
+<script>
+
+var prenom="David";
+var nom="Dupont";
+const label="Utilisateur";
+alert(label + " : " + prenom + " " + nom);
+
+var prenom="David";
+var age=18;
+var utilisateur = {identifiant:"david",motdepasse:"azerty"};
+alert(typeof prenom);
+alert(typeof age);
+alert(typeof utilisateur);
+
+var num1 = 5;
+var num2 = 2;
+var resultat = num1 * num2;
+alert(resultat);
+
+var num1 = 5;
+num1 *= 2;
+alert(num1);
+
+var prenom = "David ";
+var nom = "Dupont";
+var nomComplet = prenom + nom;
+var tempFahr = prompt("Quelle est la température en degrés Fahrenheit que vous souhaitez convertir ?");
+var tempCelsius = (tempFahr-32)/1.8;
+alert("Votre température en degrés Celsius est : " + tempCelsius);
+
+
+
+</script>
+
+
+</body>
+</html>

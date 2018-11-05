@@ -1,0 +1,22 @@
+Identifiant : <input type="text" id="identifiant">
+<button id="envoi">Valider</button>
+<div id="resultat"></div>
+
+
+
+<script>
+var element = document.getElementById("envoi");
+element.addEventListener("click", function() {
+   var ajax = new XMLHttpRequest();
+   var identifiant = document.getElementById("identifiant").value; 
+   console.log(identifiant);
+   ajax.open("POST", "ajax.php");
+   ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+   ajax.addEventListener("readystatechange", function() {
+      if(ajax.readyState === XMLHttpRequest.DONE && ajax.status === 200) {
+	     document.getElementById("resultat").innerHTML = ajax.responseText;
+	  }
+   });
+   ajax.send("id="+identifiant);
+});
+</script>

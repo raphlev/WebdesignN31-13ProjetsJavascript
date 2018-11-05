@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Manipuler RSS</title>
+  
+</head>
+<body>
+
+<ul id="cible"></ul>
+<script id="fluxRSS" type="plain/text">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Le Monde.fr - Actualités et Infos en France et dans le monde</title>
+    <description>Le Monde.fr - 1er site d'information. Les articles du journal et toute l'actualité en continu : International, France, Société, Economie, Culture, Environnement, Blogs ...</description>
+    <lastBuildDate>Thu, 01 Jun 2017 00:23:07 +0200</lastBuildDate>
+    <link>http://www.lemonde.fr/rss/une.xml</link>
+    <item>
+      <link>http://www.lemonde.fr/les-decodeurs/article/2017/05/31/l-affaire-richard-ferrand-en-cinq-questions_5136649_4355770.html?xtor=RSS-3208</link>
+      <title>L’affaire Richard Ferrand en cinq points</title>
+      <description>Plusieurs sociétés et personnes sont concernées par les révélations concernant le ministre de la cohésion des territoires. Résumé des différents volets de l’affaire.</description>
+      <pubDate>Wed, 31 May 2017 15:39:53 +0200</pubDate>
+    </item>
+    <item>
+      <link>http://www.lemonde.fr/immigration-et-diversite/article/2017/05/31/migrants-le-maire-de-grande-synthe-menace-de-reconstruire-un-camp-d-accueil_5136843_1654200.html?xtor=RSS-3208</link>
+      <title>Migrants : le maire de Grande-Synthe menace de reconstruire un camp d’accueil</title>
+      <description>Damien Carême, le maire de Grande-Synthe ne supporte plus l’errance de quelque 250 migrants dans sa ville. Face à lui, le ministre de l’intérieur fait la sourde oreille.</description>
+      <pubDate>Wed, 31 May 2017 22:08:36 +0200</pubDate>
+    </item>
+  </channel>
+</rss>
+</script>
+
+
+
+<script>
+
+var fluxRSS = document.getElementById("fluxRSS").innerHTML;
+function lireDonnees(data) {
+  parser = new DOMParser();
+  var xmlDoc = parser.parseFromString(data, "text/xml");
+  var items = Array.from(xmlDoc.getElementsByTagName('item'));
+  var flux = [];
+  items.forEach(function(item) {
+    flux.push({
+      title: lireNoeud(item, 'title'),
+      link: lireNoeud(item, 'link'),
+      pubDate: lireNoeud(item, 'pubDate'),
+      description: lireNoeud(item, 'description'),
+    });
+  });
+  return flux;
+}
+function lireNoeud(node, tagToRetrieve) {
+  var htmlData = node.getElementsByTagName(tagToRetrieve)[0].innerHTML;
+  return unescape(htmlData);
+}
+var monFlux = lireDonnees(fluxRSS);
+
+var cible = document.getElementById("cible");
+monFlux.forEach(function(item) {
+  var itemList = document.createElement('li');
+  var itemAnchor = document.createElement('a');
+  var itemParagraph = document.createElement('p');
+  itemAnchor.setAttribute('cible', '_blank');
+  itemAnchor.setAttribute('href', item.link);
+  itemAnchor.innerText = item.title;
+  itemParagraph.innerHTML = item.description;
+
+  itemList.appendChild(itemAnchor);
+  itemList.appendChild(itemParagraph);
+  cible.appendChild(itemList);
+});
+
+
+</script>
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<button id="envoi">Lire le fichier</button>
+<div id="resultat"></div>
+
+
+
+<script>
+var element = document.getElementById("envoi");
+element.addEventListener("click", function() {
+   var ajax = new XMLHttpRequest();
+   ajax.open("GET", "ajax.xml");
+   ajax.addEventListener("readystatechange", function() {
+      if(ajax.readyState === XMLHttpRequest.DONE && ajax.status === 200) {
+	     var xml = ajax.responseXML;
+         var langage = xml.getElementsByTagName("langage")[0];
+		 var nom, type;
+		 for(var i=0; i<langage.childNodes.length; i++) {
+		    if(langage.childNodes[i].nodeName == "nom") {
+			   nom = langage.childNodes[i].firstChild.nodeValue;
+			}
+			else if(langage.childNodes[i].nodeName == "type") {
+			   type = langage.childNodes[i].firstChild.nodeValue;
+			}
+		 }
+	     document.getElementById("resultat").innerHTML = "Langage : " + nom + " Exécution " + type;
+	  }
+   });
+   ajax.send(null);
+});
+</script>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Créer vos fonctions</title>
+</head>
+<body>
+
+<script>
+
+function parite(nombre) {
+   if (nombre%2 == 0) {
+      alert(nombre + " est pair");
+   }
+   else
+      alert(nombre + " est impair");
+}
+
+var nbrTest;
+nbrTest = parseInt(prompt("Indiquez le nombre à évaluer"));
+parite(nbrTest); 
+
+
+
+function surface(longueur, hauteur) {
+  var aire = longueur*hauteur;
+  return aire;
+}
+alert("L'aire est de "+surface(20,10)+" m²");
+
+
+function redimensionnement(largeur, hauteur) {
+   var largDest, hautDest;
+   largDest = largeur/1.5;
+   hautDest = hauteur/1.5;
+   return {largeur: largDest, hauteur: hautDest};
+}
+var obj = redimensionnement(800,600);
+alert(obj.largeur);
+alert(obj.hauteur);
+
+
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Gérer dates 03</title>
+</head>
+<body>
+
+<img id="diaporama" src="fleur01.jpg" />
+
+<script>
+
+var image = document.getElementById("diaporama");
+var i=1;
+function diapo(i) {
+   if(i==5) { 
+      i=1;
+   }
+   image.src="fleur0"+i+".jpg";
+   i = i+1;
+   setTimeout(diapo, 2000, i);
+}
+diapo(i);
+
+</script>
+
+
+</body>
+</html>

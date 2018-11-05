@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Formulaire 04</title>
+</head>
+<body>
+
+<input type="text" id="champ">
+
+<script>
+
+var champ = document.getElementById("champ");
+champ.addEventListener("focus", function() {
+   champ.style.backgroundColor = "green";
+});
+champ.addEventListener("blur", function() {
+   champ.style.backgroundColor = "";
+});
+
+</script>
+
+
+</body>
+</html>

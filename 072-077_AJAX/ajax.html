@@ -1,0 +1,18 @@
+<button id="envoi">Lire le fichier</button>
+<div id="resultat"></div>
+
+
+
+<script>
+var element = document.getElementById("envoi");
+element.addEventListener("click", function() {
+   var ajax = new XMLHttpRequest();
+   ajax.open("GET", "ajax.txt");
+   ajax.addEventListener("readystatechange", function() {
+      if(ajax.readyState === XMLHttpRequest.DONE && ajax.status === 200) {
+	     document.getElementById("resultat").innerHTML = ajax.responseText;
+	  }
+   });
+   ajax.send(null);
+});
+</script>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Manipuler les fichiers 01</title>
+  
+</head>
+<body>
+
+<input type="file" id="fichiers" multiple />
+<span id="liste"></span>
+
+<script>
+function listeFichiers(e) {
+   var fichiers = e.target.files;
+   var liste = [];
+   for (var i = 0, f; f = fichiers[i]; i++) {
+      liste.push("<li><strong>", escape(f.name), "</strong> (", f.type || "n/a", ") - ",
+                  f.size, " octets, dernière modification : ",
+                  f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : "n/a",
+                  "</li>");
+   }
+   document.getElementById("liste").innerHTML = "<ul>" + liste.join("") + "</ul>";
+}
+document.getElementById("fichiers").addEventListener("change", listeFichiers, false);
+
+</script>
+
+
+</script>
+</body>
+</html>

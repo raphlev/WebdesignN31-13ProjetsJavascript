@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Traiter chaines 06</title>
+  
+</head>
+<body>
+
+<script>
+
+var email = "identifiant@fourNisseur.fr";
+var decoupe = email.indexOf("@");
+var fournisseur = email.substring(decoupe+1);
+alert(fournisseur.split(".")[0].toLowerCase());
+
+</script>
+
+
+</script>
+</body>
+</html>

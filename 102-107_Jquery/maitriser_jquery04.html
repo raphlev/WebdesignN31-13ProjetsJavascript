@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Maîtriser jQuery 04</title>
+  
+  <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+  
+</head>
+<body>
+
+<button id="login">Se connecter</button>
+<div id="zone"><h3>Connectez-vous</h3>Identifiant <input type="text"><br/><br/>Mot de passe <input type="text"></div>
+<span id="alerte">Mot de passe oublié ?</span>
+
+
+<script>
+
+$(document).ready(function() {
+	$("#login").click(function(){
+		$("#zone").fadeIn(200, function () {
+			$("#alerte").fadeIn(600);
+		});
+	return false;
+	});
+});
+</script>
+<style>
+#alerte {
+	background-color:#7ee97e;
+	font-weight:strong;
+	display:none;
+}
+#zone {
+	background-color:#e9e37e;
+	border-radius:5px;
+	padding:5px;
+	display:none;
+	width:340px;
+}
+</style>
+
+
+
+</body>
+</html>

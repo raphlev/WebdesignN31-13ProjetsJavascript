@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Maîtriser jQuery 03</title>
+  
+  <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+  
+</head>
+<body>
+
+<p id="para" style="width:200px; height:120px; background-color:#a2fdaf;">Voici le texte de mon paragraphe</p>
+
+<script>
+
+$(document).ready(function() {
+	$('#para').animate({
+    	width : '350px',
+	height : '200px',
+	fontSize : '20px',
+  	borderRadius : '10px',
+	padding : '15px',
+	opacity: 0.5
+	}, 'slow');
+});
+
+
+</script>
+
+
+</body>
+</html>

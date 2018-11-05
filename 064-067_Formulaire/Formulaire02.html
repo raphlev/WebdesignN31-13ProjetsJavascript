@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Formulaire 02</title>
+</head>
+<body>
+
+<form id="form">
+   Supplément(s) :
+   <input type="checkbox" class="supp" name="repas" value="salade" />Salade<br/>
+   <input type="checkbox" class="supp" name="repas" value="tomate" />Tomate<br/>
+   <input type="checkbox" class="supp" name="repas" value="oignon" />Oignon<br/>
+   <input type="button" id="valider" value="Valider" />
+</form>
+
+<div id="commande"></div>
+
+<script>
+var valider = document.getElementById("valider");
+valider.addEventListener("click", function(e) {
+   var commande = document.getElementsByClassName("supp");
+   var texte = "";
+   var i;
+   for (i = 0; i < commande.length; i++) {
+      if(commande[i].checked) {
+         texte = texte + commande[i].value + " ";
+      }
+   }
+   document.getElementById("commande").innerHTML = "Vos suppléments : " + texte;
+});
+
+
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Interagir avec des événements 03</title>
+</head>
+<body>
+
+<div id="resultat"></div>
+
+<div id="survol">Survolez-moi
+  <div id="survol2">Survolez-moi aussi</div>
+</div>
+<div id="curseur"></div>
+
+
+<script>
+
+var survol = document.getElementById("survol");
+var resultat = document.getElementById("resultat");
+survol.addEventListener("mouseover", function(e) {
+   resultat.innerHTML = "L'événément '" + e.type + "' concerne l'ID : " + e.target.id;
+});
+var position = document.getElementById("curseur");
+document.addEventListener("mousemove", function(e) {
+   position.innerHTML = "Curseur x : " + e.clientX + " px<br />Curseur y : " + e.clientY + " px";
+});
+
+
+</script>
+
+
+</body>
+</html>

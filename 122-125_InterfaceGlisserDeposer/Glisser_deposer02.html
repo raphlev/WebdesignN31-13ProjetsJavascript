@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Interagir avec des événements 01</title>
+</head>
+<body>
+
+<div id="depart" draggable="true" />
+<br/>
+<div id="arrivee"></div>
+
+<style>
+#arrivee {
+width: 300px;
+height: 400px;
+border: 2px dashed;
+}
+</style>
+
+<script>
+
+var deplacable = document.getElementById("depart");
+var depot = document.getElementById("arrivee");
+
+deplacable.addEventListener('dragstart', function(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+});
+
+depot.addEventListener('drop', function(ev) {
+    ev.preventDefault();
+    var files = ev.dataTransfer.files,
+        nomFichiers = "";
+    for (var i = 0; i < files.length; i++) {
+        nomFichiers += '\n' + files[i].name;
+    }
+    console.log(files.length + " fichier(s) :\n" + nomFichiers);
+});
+
+
+depot.addEventListener('dragover', function(ev) {
+    ev.preventDefault();
+});
+
+
+
+</script>
+
+
+</body>
+</html>

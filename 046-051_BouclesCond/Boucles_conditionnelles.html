@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Boucles conditionnelles</title>
+</head>
+<body>
+
+<script>
+var resultat=12;
+if(resultat >= 10) {
+   alert("Vous avez la moyenne !");
+}
+else {
+   alert("Vous ferez mieux la prochaine fois !");
+}
+
+
+var resultat=17;
+if(resultat >= 10 && resultat < 16) {
+   alert("Vous avez la moyenne !");
+}
+else if(resultat >= 16) {
+   alert("Quel tour de force !");
+   }
+else {
+   alert("Vous ferez mieux la prochaine fois !");
+}
+
+
+var dateActuelle = new Date();
+var jour = dateActuelle.getDay();
+var nomJour;
+if(jour==0) {
+   nomJour = "dimanche";
+}
+else if(jour==1) {
+   nomJour = "lundi";
+}
+else if(jour==2) {
+   nomJour = "mardi";
+}
+else if(jour==3) {
+   nomJour = "mercredi";
+}
+else if(jour==4) {
+   nomJour = "jeudi";
+}
+else if(jour==5) {
+   nomJour = "vendredi";
+}
+else if(jour==6) {
+   nomJour = "samedi";
+}
+else {
+   nomJour = "étrange !";
+}
+alert(nomJour);
+
+
+var compteur = 1;
+while (compteur <= 10){
+   console.log("Compteur : " + compteur);
+   compteur++;
+}
+
+
+var compteur = 1;
+do{
+   console.log("Compteur : " + compteur);
+   compteur++;
+}
+while (compteur <= 10);
+
+
+
+for (var compteur = 1; compteur <= 10; compteur++) {
+    console.log("Compteur : " + compteur);
+}
+
+
+
+var constructeurs = ["Renault", "Peugeot", "Toyota"];
+var i = 0;
+var nbr = constructeurs.length;
+var texte = "";
+for (; i < nbr; ) {
+    texte += constructeurs[i] + "\n";
+    i++;
+}
+console.log(texte); 
+</script>
+
+
+</body>
+</html>

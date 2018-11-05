@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Manipuler les fichiers 02</title>
+  
+</head>
+<body>
+
+<input type="file" id="fichier" /><br/><br/>
+<span id="contenu"></span>
+
+
+<script>
+var fichier = document.getElementById("fichier");
+
+fichier.addEventListener("change", function() {
+   var reader = new FileReader();
+   reader.addEventListener("load", function() {
+      document.getElementById("contenu").innerHTML = "Fichier " + fichier.files[0].name + " :<br/><br/>" + reader.result;
+   });
+   reader.readAsText(fichier.files[0]);
+});
+
+</script>
+
+
+</script>
+</body>
+</html>

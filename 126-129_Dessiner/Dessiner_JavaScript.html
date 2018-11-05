@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Dessiner JavaScript</title>
+</head>
+<body>
+
+<canvas id="dessin" width="450" height="350">
+   <img src="images/zone.png" width="450" height="350" alt=""/>
+</canvas>
+
+
+
+<script>
+
+var canvas  = document.getElementById("dessin");
+var context = canvas.getContext('2d');
+
+context.fillStyle = "green";
+context.fillRect(10, 10, 60, 100);
+
+context.strokeStyle = "red";
+context.lineWidth = "2";
+context.strokeRect(20, 40, 60, 80);
+
+context.beginPath();
+context.moveTo(0, 200);
+context.lineTo(200, 0);
+context.lineTo(400, 200);
+context.lineTo(0, 200);
+context.strokeStyle = "blue";
+context.stroke();
+context.closePath();
+
+context.beginPath();
+context.arc(100, 100, 50, 0, Math.PI*2);
+context.fillStyle = "yellow";
+context.fill();
+context.closePath();
+
+</script>
+
+
+</body>
+</html>

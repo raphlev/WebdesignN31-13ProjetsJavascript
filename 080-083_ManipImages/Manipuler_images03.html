@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Manipuler les images 03</title>
+  
+</head>
+<body>
+
+<a href="01.jpg" class="lightbox"><img src="01vg.jpg" /></a>
+<a href="02.jpg" class="lightbox"><img src="02vg.jpg" /></a>
+<a href="03.jpg" class="lightbox"><img src="03vg.jpg" /></a>
+<a href="04.jpg" class="lightbox"><img src="04vg.jpg" /></a>
+<div id="lightbox"></div>
+
+
+<script>
+
+var vignettes = document.getElementsByClassName("lightbox");
+
+for (var i=0; i<vignettes.length; i++) {
+   vignettes[i].addEventListener('click', function(e) {
+      e.preventDefault();
+	  lightbox(e.currentTarget);
+   });
+}
+
+function lightbox(lien) {
+   var imageGrand = new Image(),
+   lightbox = document.getElementById("lightbox");
+
+   imageGrand.addEventListener('load', function() {
+      lightbox.innerHTML = "";
+      lightbox.appendChild(imageGrand);
+   });
+
+   imageGrand.src = lien.href;
+   lightbox.style.display = "block";
+}
+document.getElementById("lightbox").addEventListener("click", function(e) {
+   e.currentTarget.style.display = "none";
+});
+
+
+</script>
+<style>
+#lightbox {
+   display : none;
+   position: absolute;
+   top: 0; 
+   left: 0;
+   width: 100%; 
+   height: 100%;
+   text-align: center;
+   background-color: rgba(0,0,0,0.6);
+}
+#lightbox img {
+   margin-top: 100px;
+}
+
+</style>
+
+
+</script>
+</body>
+</html>

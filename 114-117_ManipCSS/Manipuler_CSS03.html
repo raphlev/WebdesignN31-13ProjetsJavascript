@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Manipuler CSS 03</title>
+  
+</head>
+<body>
+
+<div id="bloc" style="width:300px; height:200px;" class="inactive">Cliquez-moi dessus !</div>
+<style>
+.active {
+   background-color:red;
+   border: 1px solid black;
+}
+.inactive {
+   background-color:white;
+   border: none;
+}
+</style>
+<script>
+var element = document.getElementById("bloc");
+element.addEventListener("click", function() {
+   element.className = "active";
+});
+</script>
+
+
+</script>
+</body>
+</html>
